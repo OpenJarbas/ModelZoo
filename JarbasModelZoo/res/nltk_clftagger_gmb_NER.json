@@ -1,0 +1,18 @@
+{
+  "corpus": "GMB 2.2.0",
+  "lang": "en",
+  "corpus_homepage": "http://gmb.let.rug.nl/data.php",
+  "model_id": "nltk_clftagger_gmb_NER",
+  "tagset": "conll_iob",
+  "algo": "ClassifierBasedTagger | NamedEntityChunker",
+  "entit\u00edes": [
+    "tim",
+    "art",
+    "geo",
+    "eve",
+    "org",
+    "per",
+    "gpe",
+    "nat"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "corpus": "CONLL2000",
+  "model_id": "nltk_conll2000_postag_ngram_chunker",
+  "tagset": "",
+  "lang": "en",
+  "algo": "PostagChunkParser"
+}

@@ -1,0 +1,14 @@
+{
+  "corpus": "Paramopama",
+  "lang": "pt",
+  "corpus_homepage": "https://github.com/davidsbatista/NER-datasets/blob/master/Portuguese/Paramopama",
+  "model_id": "nltk_clftagger_paramopama_NER",
+  "tagset": "conll_iob",
+  "algo": "ClassifierBasedTagger | NamedEntityChunker",
+  "entit\u00edes": [
+    "LOCAL",
+    "ORGANIZACAO",
+    "PESSOA",
+    "TEMPO"
+  ]
+}

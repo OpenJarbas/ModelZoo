@@ -1,0 +1,16 @@
+{
+  "corpus": "brown",
+  "model_id": "nltk_brown_brill_tagger",
+  "tagset": "brown",
+  "lang": "en",
+  "algo": "nltk.brill.fntbl37",
+  "backoff_taggers": [
+    "AffixTagger",
+    "UnigramTagger",
+    "BigramTagger",
+    "TrigramTagger"
+  ],
+  "required_packages": [
+    "nltk"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "corpus": "WNUT17",
+  "lang": "en",
+  "corpus_homepage": "https://github.com/leondz/emerging_entities_17",
+  "model_id": "nltk_clftagger_WNUT17_NER",
+  "tagset": "conll_iob",
+  "algo": "ClassifierBasedTagger | NamedEntityChunker",
+  "entit\u00edes": [
+    "group",
+    "person",
+    "product",
+    "corporation",
+    "location",
+    "creative-work"
+  ]
+}

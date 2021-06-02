@@ -1,0 +1,15 @@
+{
+  "corpus": "treebank",
+  "model_id": "nltk_treebank_brill_tagger",
+  "tagset": "Penn Treebank",
+  "lang": "en",
+  "algo": "BrillTaggerTrainer",
+  "backoff_taggers": [
+    "DefaultTagger",
+    "AffixTagger",
+    "RegexpTagger",
+    "UnigramTagger",
+    "BigramTagger",
+    "TrigramTagger"
+  ]
+}

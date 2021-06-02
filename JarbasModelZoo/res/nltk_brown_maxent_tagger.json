@@ -1,0 +1,11 @@
+{
+  "corpus": "brown",
+  "lang": "en",
+  "model_id": "nltk_brown_maxent_tagger",
+  "tagset": "brown",
+  "algo": "ClassifierBasedPOSTagger",
+  "classifier": "MaxentClassifier",
+  "required_packages": [
+    "nltk"
+  ]
+}

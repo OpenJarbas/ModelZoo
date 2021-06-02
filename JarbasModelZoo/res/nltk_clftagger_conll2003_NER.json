@@ -1,0 +1,14 @@
+{
+  "corpus": "CONLL2003",
+  "lang": "en",
+  "corpus_homepage": "",
+  "model_id": "nltk_clftagger_conll2003_NER",
+  "tagset": "conll_iob",
+  "algo": "ClassifierBasedTagger | NamedEntityChunker",
+  "entit\u00edes": [
+    "ORG",
+    "LOC",
+    "MISC",
+    "PER"
+  ]
+}

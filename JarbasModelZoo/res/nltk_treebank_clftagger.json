@@ -1,0 +1,7 @@
+{
+  "corpus": "treebank",
+  "lang": "en",
+  "model_id": "nltk_treebank_clftagger",
+  "tagset": "Penn Treebank",
+  "algo": "ClassifierBasedPOSTagger"
+}

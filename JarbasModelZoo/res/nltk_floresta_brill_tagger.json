@@ -1,0 +1,15 @@
+{
+  "corpus": "floresta",
+  "model_id": "nltk_floresta_brill_tagger",
+  "tagset": "",
+  "lang": "pt",
+  "algo": "nltk.brill.fntbl37",
+  "backoff_taggers": [
+    "DefaultTagger",
+    "AffixTagger",
+    "UnigramTagger",
+    "RegexpTagger",
+    "BigramTagger",
+    "TrigramTagger"
+  ]
+}

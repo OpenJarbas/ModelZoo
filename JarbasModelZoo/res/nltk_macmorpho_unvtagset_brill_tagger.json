@@ -1,0 +1,15 @@
+{
+  "corpus": "macmorpho",
+  "model_id": "nltk_macmorpho_unvtagset_brill_tagger",
+  "tagset": "universal",
+  "lang": "pt",
+  "algo": "nltk.brill.fntbl37",
+  "backoff_taggers": [
+    "DefaultTagger",
+    "AffixTagger",
+    "UnigramTagger",
+    "RegexpTagger",
+    "BigramTagger",
+    "TrigramTagger"
+  ]
+}
