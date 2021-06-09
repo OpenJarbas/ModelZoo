@@ -1,0 +1,19 @@
+{
+  "corpus": "floresta",
+  "corpus_homepage": "http://www.linguateca.pt/Floresta",
+  "model_id": "nltk_floresta_ngram_tagger",
+  "tagset": "VISL (Portuguese)",
+  "tagset_homepage": "https://visl.sdu.dk/visl/pt/symbolset-floresta.html",
+  "lang": "pt",
+  "algo": "TrigramTagger",
+  "backoff_taggers": [
+    "AffixTagger",
+    "UnigramTagger",
+    "BigramTagger",
+    "TrigramTagger"
+  ],
+  "required_packages": [
+    "nltk"
+  ],
+  "accuracy": 0.925358401880141
+}

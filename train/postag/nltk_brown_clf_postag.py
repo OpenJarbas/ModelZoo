@@ -1,5 +1,6 @@
 import json
 import pickle
+import random
 from os.path import join, dirname
 
 import nltk
@@ -9,6 +10,7 @@ from nltk.tag.sequential import ClassifierBasedPOSTagger
 MODEL_META = {
     "corpus": "brown",
     "lang": "en",
+    "corpus_homepage": "http://www.hit.uib.no/icame/brown/bcm.html",
     "model_id": "nltk_brown_clftagger",
     "tagset": "brown",
     "algo": "ClassifierBasedPOSTagger",
@@ -21,6 +23,7 @@ META = join(dirname(dirname(dirname(__file__))), "JarbasModelZoo", "res")
 meta_path = join(META, MODEL_META["model_id"] + ".json")
 
 corpus = brown.tagged_sents()  # 3914
+random.shuffle(corpus)
 train_data = corpus[:3000]
 test_data = corpus[3000:]
 

@@ -1,5 +1,6 @@
 import json
 import pickle
+import random
 from os.path import join, dirname
 
 import nltk
@@ -24,6 +25,7 @@ meta_path = join(META, MODEL_META["model_id"] + ".json")
 with open(meta_path, "w") as f:
     json.dump(MODEL_META, f)
 corpus = treebank.tagged_sents()  # 3914
+random.shuffle(corpus)
 train_data = corpus[:3000]
 test_data = corpus[3000:]
 

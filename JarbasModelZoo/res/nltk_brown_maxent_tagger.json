@@ -1,6 +1,7 @@
 {
   "corpus": "brown",
   "lang": "en",
+  "corpus_homepage": "http://www.hit.uib.no/icame/brown/bcm.html",
   "model_id": "nltk_brown_maxent_tagger",
   "tagset": "brown",
   "algo": "ClassifierBasedPOSTagger",

@@ -1,0 +1,18 @@
+{
+  "corpus": "cess_esp",
+  "lang": "es",
+  "model_id": "nltk_cess_esp_brill_tagger",
+  "tagset": "EAGLES",
+  "tagset_homepage": "http://www.ilc.cnr.it/EAGLES96/annotate/annotate.html",
+  "algo": "nltk.brill.fntbl37",
+  "backoff_taggers": [
+    "AffixTagger",
+    "UnigramTagger",
+    "BigramTagger",
+    "TrigramTagger"
+  ],
+  "required_packages": [
+    "nltk"
+  ],
+  "accuracy": 0.9268428796103698
+}

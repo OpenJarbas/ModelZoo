@@ -1,8 +1,14 @@
 import json
 from os.path import join, dirname
+import nltk
+from random import shuffle
+from os.path import join
+from string import punctuation
+import pickle
 
 MODEL_META = {
     "corpus": "macmorpho",
+    "corpus_homepage": "http://www.nilc.icmc.usp.br/lacioweb/",
     "model_id": "nltk_macmorpho_unvtagset_brill_tagger",
     "tagset": "Universal Dependencies",
     "lang": "pt",
@@ -15,11 +21,7 @@ MODEL_META = {
 META = join(dirname(dirname(dirname(__file__))), "JarbasModelZoo", "res")
 meta_path = join(META, MODEL_META["model_id"] + ".json")
 
-import nltk
-from random import shuffle
-from os.path import join
-from string import punctuation
-import pickle
+
 
 nltk.download('mac_morpho')
 

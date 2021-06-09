@@ -1,0 +1,22 @@
+{
+  "corpus": "MIT Movie Corpus",
+  "lang": "en",
+  "corpus_homepage": "https://groups.csail.mit.edu/sls/downloads/",
+  "model_id": "nltk_clftagger_slsmovies_NER",
+  "tagset": "conll_iob",
+  "algo": "ClassifierBasedTagger | NamedEntityChunker",
+  "entit\u00edes": [
+    "Restaurant_Name",
+    "Price",
+    "Cuisine",
+    "Hours",
+    "Amenity",
+    "Dish",
+    "Location",
+    "Rating"
+  ],
+  "required_packages": [
+    "nltk",
+    "JarbasModelZoo"
+  ]
+}

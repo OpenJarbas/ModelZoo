@@ -1,4 +1,6 @@
+import json
 import pickle
+import random
 from os.path import join, dirname
 
 from nltk.tag import ClassifierBasedTagger
@@ -18,7 +20,6 @@ MODEL_META = {
     "entitíes": ['LOCAL', 'ORGANIZACAO', 'PESSOA', 'TEMPO'],
     "required_packages": ["nltk", "JarbasModelZoo"]
 }
-import json
 
 META = join(dirname(dirname(dirname(__file__))), "JarbasModelZoo", "res")
 meta_path = join(META, MODEL_META["model_id"] + ".json")
@@ -86,7 +87,7 @@ corpus_root = "/home/user/my_code/OpenJarbas/nlp_models/NER-datasets/Portuguese/
 reader = postag_corpus(corpus_root)
 
 data = list(reader)
-
+random.shuffle(data)
 training_samples = data[:int(len(data) * 0.9)]
 test_samples = data[int(len(data) * 0.9):]
 

@@ -2,6 +2,7 @@
   "corpus": "brown",
   "model_id": "nltk_brown_brill_tagger",
   "tagset": "brown",
+  "corpus_homepage": "http://www.hit.uib.no/icame/brown/bcm.html",
   "lang": "en",
   "algo": "nltk.brill.fntbl37",
   "backoff_taggers": [
@@ -12,5 +13,6 @@
   ],
   "required_packages": [
     "nltk"
-  ]
+  ],
+  "accuracy": 0.9417686958747493
 }

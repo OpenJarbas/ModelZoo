@@ -11,6 +11,7 @@ MODEL_META = {
     "corpus": "floresta + macmorpho",
     "lang": "pt",
     "model_id": "nltk_floresta_macmorpho_brill_tagger",
+    "corpus_homepage": "https://www.nltk.org/nltk_data",
     "tagset": "Universal Dependencies",
     "algo": "nltk.brill.fntbl37",
     "backoff_taggers": ["DefaultTagger", "AffixTagger", "UnigramTagger",

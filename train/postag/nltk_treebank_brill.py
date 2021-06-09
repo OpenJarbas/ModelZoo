@@ -1,5 +1,6 @@
 import json
 import pickle
+import random
 from os.path import join, dirname
 
 import nltk
@@ -12,6 +13,7 @@ from nltk.tag import brill, brill_trainer
 
 MODEL_META = {
     "corpus": "treebank",
+    "corpus_homepage": "http://www.hit.uib.no/icame/brown/bcm.html",
     "model_id": "nltk_treebank_brill_tagger",
     "tagset": "Penn Treebank",
     "lang": "en",
@@ -27,6 +29,7 @@ META = join(dirname(dirname(dirname(__file__))), "JarbasModelZoo", "res")
 meta_path = join(META, MODEL_META["model_id"] + ".json")
 
 corpus = treebank.tagged_sents()  # 3914
+random.shuffle(corpus)
 train_data = corpus[:3000]
 test_data = corpus[3000:]
 

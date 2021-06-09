@@ -14,5 +14,9 @@
     "per",
     "gpe",
     "nat"
+  ],
+  "required_packages": [
+    "nltk",
+    "JarbasModelZoo"
   ]
 }

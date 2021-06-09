@@ -9,7 +9,9 @@ import nltk
 MODEL_META = {
     "corpus": "macmorpho",
     "model_id": "nltk_macmorpho_brill_tagger",
+    "corpus_homepage": "http://www.nilc.icmc.usp.br/macmorpho/",
     "tagset": "",
+    "tagset_homepage": "http://www.nilc.icmc.usp.br/macmorpho/macmorpho-manual.pdf",
     "lang": "pt",
     "algo": "nltk.brill.fntbl37",
     "backoff_taggers": ["DefaultTagger", "AffixTagger", "UnigramTagger",

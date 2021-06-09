@@ -1,5 +1,7 @@
+import json
 import os
 import pickle
+import random
 from os.path import join, dirname
 
 from nltk import pos_tag
@@ -20,7 +22,6 @@ MODEL_META = {
                  'creative-work'],
     "required_packages": ["nltk", "JarbasModelZoo"]
 }
-import json
 
 META = join(dirname(dirname(dirname(__file__))), "JarbasModelZoo", "res")
 meta_path = join(META, MODEL_META["model_id"] + ".json")
@@ -98,7 +99,7 @@ corpus_root = "/home/user/my_code/OpenJarbas/nlp_models/NER-datasets/WNUT17"
 reader = postag_corpus(corpus_root)
 
 data = list(reader)
-
+random.shuffle(data)
 training_samples = data[:int(len(data) * 0.9)]
 test_samples = data[int(len(data) * 0.9):]
 

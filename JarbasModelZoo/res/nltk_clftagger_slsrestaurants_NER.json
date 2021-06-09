@@ -1,0 +1,32 @@
+{
+  "corpus": "MIT Restaurant Corpus",
+  "lang": "en",
+  "corpus_homepage": "https://groups.csail.mit.edu/sls/downloads/",
+  "model_id": "nltk_clftagger_slsrestaurants_NER",
+  "tagset": "conll_iob",
+  "algo": "ClassifierBasedTagger | NamedEntityChunker",
+  "entit\u00edes": [
+    "PERSON",
+    "FAC",
+    "EVENT",
+    "GPE",
+    "TIME",
+    "LAW",
+    "PRODUCT",
+    "ORDINAL",
+    "ORG",
+    "QUANTITY",
+    "CARDINAL",
+    "LOC",
+    "DATE",
+    "WORK_OF_ART",
+    "NORP",
+    "LANGUAGE",
+    "MONEY",
+    "PERCENT"
+  ],
+  "required_packages": [
+    "nltk",
+    "JarbasModelZoo"
+  ]
+}

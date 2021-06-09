@@ -1,5 +1,6 @@
 import os
 import pickle
+import random
 from os.path import join, dirname
 
 from nltk.tag import ClassifierBasedTagger
@@ -89,7 +90,7 @@ corpus_root = "/home/user/my_code/OpenJarbas/nlp_models/NER-datasets/Portuguese/
 reader = postag_corpus(corpus_root)
 
 data = list(reader)
-
+random.shuffle(data)
 training_samples = data[:int(len(data) * 0.9)]
 test_samples = data[int(len(data) * 0.9):]
 

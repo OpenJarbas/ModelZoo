@@ -28,6 +28,7 @@ MODEL_META = {
 }
 
 import json
+
 META = join(dirname(dirname(dirname(__file__))), "JarbasModelZoo", "res")
 meta_path = join(META, MODEL_META["model_id"] + ".json")
 with open(meta_path, "w") as f:

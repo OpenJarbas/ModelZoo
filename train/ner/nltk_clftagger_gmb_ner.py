@@ -1,6 +1,8 @@
 import os
 import pickle
+import random
 from os.path import join, dirname
+import json
 
 from nltk.tag import ClassifierBasedTagger
 
@@ -18,7 +20,7 @@ MODEL_META = {
     "entitíes": ['tim', 'art', 'geo', 'eve', 'org', 'per', 'gpe', 'nat'],
     "required_packages": ["nltk", "JarbasModelZoo"]
 }
-import json
+
 
 META = join(dirname(dirname(dirname(__file__))), "JarbasModelZoo", "res")
 meta_path = join(META, MODEL_META["model_id"] + ".json")
@@ -90,6 +92,7 @@ corpus_root = "/home/user/Downloads/gmb-2.2.0/"
 reader = read_gmb(corpus_root)
 
 data = list(reader)
+random.shuffle(data)
 training_samples = data[:int(len(data) * 0.9)]
 test_samples = data[int(len(data) * 0.9):]
 
@@ -102,7 +105,7 @@ def train():
 
     # save pickle
     path = join(dirname(dirname(dirname(__file__))),
-                "models", "ner", "nltk_clftagger_gmb_NER.pkl")
+                "models", "ner", MODEL_META["model_id"] + ".pkl")
 
     with open(path, "wb") as f:
         pickle.dump(tagger, f)
@@ -110,13 +113,16 @@ def train():
 
 def test():
     path = join(dirname(dirname(dirname(__file__))),
-                "models", "ner", "nltk_clftagger_gmb_NER.pkl")
+                "models", "ner", MODEL_META["model_id"] + ".pkl")
     chunker = NamedEntityChunker(path)
     # accuracy test
     score = chunker.evaluate(
         [conlltags2tree([(w, t, iob) for (w, t), iob in iobs])
          for iobs in test_samples])
     print(score.accuracy())
+    MODEL_META["accuracy"] = score.accuracy()
+    with open(meta_path, "w") as f:
+        json.dump(MODEL_META, f)
 
 
 train()

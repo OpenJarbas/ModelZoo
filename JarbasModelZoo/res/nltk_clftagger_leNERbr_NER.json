@@ -4,8 +4,8 @@
   "corpus_homepage": "https://cic.unb.br/~teodecampos/LeNER-Br/",
   "model_id": "nltk_clftagger_leNERbr_NER",
   "tagset": "conll_iob",
-  "algo": "ClassifierBasedTagger | NamedEntityChunker",
-  "entit\u00edes": [
+  "algo": "ClassifierBasedTagger / NamedEntityChunker",
+  "entities": [
     "PESSOA",
     "JURISPRUDENCIA",
     "LEGISLACAO",

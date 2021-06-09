@@ -1,0 +1,27 @@
+{
+  "corpus": "MIT Movie Corpus - Trivia",
+  "lang": "en",
+  "corpus_homepage": "https://groups.csail.mit.edu/sls/downloads/",
+  "model_id": "nltk_clftagger_slstrivia10k13_NER",
+  "tagset": "conll_iob",
+  "algo": "ClassifierBasedTagger | NamedEntityChunker",
+  "entit\u00edes": [
+    "Director",
+    "Genre",
+    "Year",
+    "Origin",
+    "Relationship",
+    "Character_Name",
+    "Quote",
+    "Actor",
+    "Opinion",
+    "Award",
+    "Soundtrack",
+    "Plot"
+  ],
+  "required_packages": [
+    "nltk",
+    "JarbasModelZoo"
+  ],
+  "accuracy": 0.8061227103881132
+}
