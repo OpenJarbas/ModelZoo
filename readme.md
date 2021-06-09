@@ -2,42 +2,55 @@
 
 trained models (with training scripts) for use across different projects
 
-- [NLP Models](#nlp-models)
-    * [NLTK](#nltk)
-        + [Postag](#postag)
-            - [Portuguese](#portuguese)
-            - [Spanish](#spanish)
-            - [Catalan](#catalan)
-
-this package includes 2 utility methods to (down)load models, you can also use
-the pickle library directly and skip installation of this package
-
-|                  model_id                  | language |         dataset        |  task  | model type | accuracy |   required packages   |
-|:------------------------------------------:|:--------:|:----------------------:|:------:|:----------:|:--------:|:---------------------:|
-|    nltk_floresta_macmorpho_brill_tagger    |    pt    |  floresta + mac morpho | postag |   tagger   |          |          nltk         |
-|          nltk_cess_es_brill_tagger         |    es    |         cess_es        | postag |   tagger   |          |          nltk         |
-|          nltk_cess_ca_brill_tagger         |    ca    |         cess_ca        | postag |   tagger   |          |          nltk         |
-|         nltk_treebank_brill_tagger         |    en    |        treebank        | postag |   tagger   |  0.9083  |          nltk         |
-|         nltk_treebank_maxent_tagger        |    en    |        treebank        | postag |   tagger   |  0.9258  |          nltk         |
-|           nltk_treebank_clftagger          |    en    |        treebank        | postag |   tagger   |          |                       |
-|         nltk_treebank_ngram_tagger         |    en    |        treebank        | postag |   tagger   |          |                       |
-|          nltk_treebank_tnt_tagger          |    en    |        treebank        | postag |   tagger   |          |                       |
-|       nltk_conll2000_clf_chunk_tagger      |    en    |        conll2000       |  chunk |   tagger   |          |                       |
-|         nltk_conll2000_clf_chunker         |    en    |        conll2000       |  chunk |   chunker  |          |                       |
-|  nltk_conll2000_postag_ngram_chunk_tagger  |    en    |        conll2000       |  chunk |   tagger   |          |                       |
-|     nltk_conll2000_postag_ngram_chunker    |    en    |        conll2000       |  chunk |   chunker  |          |                       |
-| nltk_clftagger_paramopama+second_harem_NER |    pt    | paramopama + harem(v2) |   ner  |   tagger   |  0.8334  | nltk + JarbasModelZoo |
-|        nltk_clftagger_paramopama_NER       |    pt    |       paramopama       |   ner  |   tagger   |  0.8396  | nltk + JarbasModelZoo |
-|          nltk_clftagger_harem_NER          |    pt    |        harem(v1)       |   ner  |   tagger   |  0.9247  | nltk + JarbasModelZoo |
-|        nltk_clftagger_miniharem_NER        |    pt    |       mini Harem       |   ner  |   tagger   |          |                       |
-|         nltk_clftagger_leNERbr_NER         |    pt    |        leNER-Br        |   ner  |   tagger   |          |                       |
-|           nltk_clftagger_gmb_NER           |    en    |           gmb          |   ner  |   tagger   |  0.9231  | nltk + JarbasModelZoo |
-|        nltk_clftagger_conll2003_NER        |    en    |        conll2003       |   ner  |   tagger   |  0.9108  | nltk + JarbasModelZoo |
-|          nltk_clftagger_WNUT17_NER         |    en    |         WNUT17         |   ner  |   tagger   |          |                       |
-
 ```bash
 pip install JarbasModelZoo
 ```
+
+# Models
+
+this package includes utility methods to (down)load models
+
+training scripts can be found in the [train folder](./train)
+
+### NER
+
+|model_id|language|dataset|accuracy|
+|:------:|:------:|:------:|:------:|
+|nltk_clftagger_conll2003_NER|en|[CONLL2003](https://github.com/davidsbatista/NER-datasets/tree/master/CONLL2003)| 0.874% |
+|nltk_clftagger_gmb_NER|en|[GMB 2.2.0](http://gmb.let.rug.nl/data.php)| 0% |
+|nltk_clftagger_slsmovies_NER|en|[MIT Movie Corpus](https://groups.csail.mit.edu/sls/downloads/)| 0% |
+|nltk_clftagger_slstrivia10k13_NER|en|[MIT Movie Corpus - Trivia](https://groups.csail.mit.edu/sls/downloads/)| 0.806% |
+|nltk_clftagger_slsrestaurants_NER|en|[MIT Restaurant Corpus](https://groups.csail.mit.edu/sls/downloads/)| 0% |
+|nltk_clftagger_onto5_NER|en|[OntoNotes-5.0-NER-BIO](https://github.com/yuchenlin/OntoNotes-5.0-NER-BIO)| 0.910% |
+|nltk_clftagger_paramopama_NER|pt|[Paramopama](https://github.com/davidsbatista/NER-datasets/blob/master/Portuguese/Paramopama)| 0% |
+|nltk_clftagger_paramopama+harem_NER|pt|[Paramopama + HAREM (v2)](https://github.com/davidsbatista/NER-datasets/blob/master/Portuguese/Paramopama)| 0% |
+|nltk_clftagger_WNUT17_NER|en|[WNUT17](https://github.com/leondz/emerging_entities_17)| 0% |
+|nltk_clftagger_leNERbr_NER|pt-br|[leNER-Br](https://cic.unb.br/~teodecampos/LeNER-Br/)| 0% |
+
+### POSTAG
+
+|model_id|language|dataset|tagset|accuracy|
+|:------:|:------:|:------:|:------:|:------:|
+|nltk_floresta_macmorpho_brill_tagger|pt|floresta + macmorpho|universal| 0% |
+|nltk_brown_brill_tagger|en|[brown](http://www.hit.uib.no/icame/brown/bcm.html)|brown| 0.941% |
+|nltk_brown_maxent_tagger|en|[brown](http://www.hit.uib.no/icame/brown/bcm.html)|brown| 0% |
+|nltk_brown_ngram_tagger|en|[brown](http://www.hit.uib.no/icame/brown/bcm.html)|brown| 0.930% |
+|nltk_floresta_brill_tagger|pt|[floresta](http://www.linguateca.pt/Floresta)|[VISL (Portuguese)](https://visl.sdu.dk/visl/pt/symbolset-floresta.html)| 0.938% |
+|nltk_floresta_ngram_tagger|pt|[floresta](http://www.linguateca.pt/Floresta)|[VISL (Portuguese)](https://visl.sdu.dk/visl/pt/symbolset-floresta.html)| 0.925% |
+|nltk_cess_cat_udep_brill_tagger|ca|[cess_cat_udep](https://github.com/OpenJarbas/biblioteca/blob/master/corpora/create_cess_ca.py)|Universal Dependencies| 0.974% |
+|nltk_cess_esp_udep_brill_tagger|es|[cess_esp_udep](https://github.com/OpenJarbas/biblioteca/blob/master/corpora/create_cess.py)|Universal Dependencies| 0.975% |
+|nltk_macmorpho_unvtagset_brill_tagger|pt|[macmorpho](http://www.nilc.icmc.usp.br/lacioweb/)|Universal Dependencies| 0.966% |
+|nltk_onto5_brill_tagger|en|[OntoNotes-5.0-NER-BIO](https://github.com/yuchenlin/OntoNotes-5.0-NER-BIO)|Penn Treebank| 0% |
+|nltk_treebank_clftagger|en|treebank|Penn Treebank| 0% |
+|nltk_treebank_brill_tagger|en|treebank|Penn Treebank| 0% |
+|nltk_treebank_ngram_tagger|en|treebank|Penn Treebank| 0% |
+|nltk_treebank_maxent_tagger|en|treebank|Penn Treebank| 0% |
+|nltk_treebank_tnt_tagger|en|treebank|Penn Treebank| 0% |
+|nltk_nilc_brill_tagger|pt-br|[NILC_taggers](http://www.nilc.icmc.usp.br/nilc/tools/nilctaggers.html)|[NILC](http://www.nilc.icmc.usp.br/nilc/download/tagsetcompleto.doc)| 0.881% |
+|nltk_nilc_ngram_tagger|pt-br|[NILC_taggers](http://www.nilc.icmc.usp.br/nilc/tools/nilctaggers.html)|[NILC](http://www.nilc.icmc.usp.br/nilc/download/tagsetcompleto.doc)| 0.869% |
+|nltk_cess_cat_brill_tagger|ca|[cess_cat](https://web.archive.org/web/20121023154634/http://clic.ub.edu/cessece/)|[EAGLES](http://www.ilc.cnr.it/EAGLES96/annotate/annotate.html)| 0.939% |
+|nltk_cess_esp_brill_tagger|es|cess_esp|[EAGLES](http://www.ilc.cnr.it/EAGLES96/annotate/annotate.html)| 0.926% |
+|nltk_macmorpho_brill_tagger|pt|macmorpho|| 0% |
 
 # Security Concerns With the Python pickle Module
 
