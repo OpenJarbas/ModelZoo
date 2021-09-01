@@ -1,0 +1,19 @@
+{
+  "corpus": "macmorpho",
+  "corpus_homepage": "http://www.nilc.icmc.usp.br/lacioweb/",
+  "model_id": "nltk_macmorpho_udep_ngram_tagger",
+  "tagset": "Universal Dependencies",
+  "lang": "pt",
+  "algo": "TrigramTagger",
+  "backoff_taggers": [
+    "AffixTagger",
+    "UnigramTagger",
+    "BigramTagger",
+    "TrigramTagger"
+  ],
+  "required_packages": [
+    "nltk"
+  ],
+  "train/test": "80/20",
+  "accuracy": 0.946243914044643
+}

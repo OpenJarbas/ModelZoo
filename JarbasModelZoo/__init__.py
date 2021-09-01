@@ -13,7 +13,7 @@ MODEL_IDS = [f.replace(".json", "")
              for f in listdir(join(dirname(__file__), "res"))]
 
 _BASE_URL = "https://github.com/OpenJarbas/ModelZoo/releases/download"
-_VERSION = "0.2a1"
+_VERSION = "0.2.0a2"
 MODEL2URL = {model_id: _BASE_URL + f"/{_VERSION}/{model_id}"
              for model_id in MODEL_IDS}
 

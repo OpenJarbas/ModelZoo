@@ -1,0 +1,19 @@
+{
+  "corpus": "cess_esp_udep",
+  "corpus_homepage": "https://github.com/OpenJarbas/biblioteca/blob/master/corpora/create_cess.py",
+  "lang": "es",
+  "model_id": "nltk_cess_esp_udep_ngram_tagger",
+  "tagset": "Universal Dependencies",
+  "algo": "TrigramTagger",
+  "backoff_taggers": [
+    "AffixTagger",
+    "UnigramTagger",
+    "BigramTagger",
+    "TrigramTagger"
+  ],
+  "required_packages": [
+    "nltk"
+  ],
+  "train/test": "80/20",
+  "accuracy": 0.9670816481919133
+}

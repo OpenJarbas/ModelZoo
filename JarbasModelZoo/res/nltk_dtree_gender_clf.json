@@ -1,0 +1,11 @@
+{
+  "corpus": "nltk names",
+  "lang": "en",
+  "corpus_homepage": "",
+  "model_id": "nltk_dtree_gender_clf",
+  "algo": "ClassifierBasedTagger",
+  "required_packages": [
+    "nltk",
+    "JarbasModelZoo"
+  ]
+}

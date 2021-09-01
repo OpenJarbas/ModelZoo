@@ -1,0 +1,11 @@
+{
+  "corpus": "treebank",
+  "model_id": "sklearn_treebank_svm_tagger",
+  "tagset": "Penn Treebank",
+  "lang": "en",
+  "algo": "sklearn.svm.LinearSVC",
+  "required_packages": [
+    "scikit-learn"
+  ],
+  "accuracy": 0.9347
+}

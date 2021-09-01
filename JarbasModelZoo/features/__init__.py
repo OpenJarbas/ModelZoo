@@ -2,7 +2,7 @@
 # this means that models using this require this package installed and can
 # NOT be loaded directly with pickle module only
 import re
-
+import nltk
 from nltk.stem.snowball import SnowballStemmer
 
 
@@ -34,59 +34,136 @@ def get_word_shape(word):
     return word_shape
 
 
-def extract_iob_features(tokens, index, history):
+def extract_iob_features(tokens, index, history, stemmer=None, memory=2):
     """
     `tokens`  = a POS-tagged sentence [(w1, t1), ...]
     `index`   = the index of the token we want to extract features for
     `history` = the previous predicted IOB tags
     """
-    # init the stemmer
-    stemmer = SnowballStemmer('english')
+    feat_dict = extract_postag_features(tokens, index, stemmer=stemmer,
+                                        memory=memory)
 
     # Pad the sequence with placeholders
-    tokens = [('__START2__', '__START2__'),
-              ('__START1__', '__START1__')] + \
-             list(tokens) + [('__END1__', '__END1__'),
-                             ('__END2__', '__END2__')]
-    history = ['__START2__', '__START1__'] + list(history)
+    tokens = ['O'] * memory + history
 
-    # shift the index with 2, to accommodate the padding
-    index += 2
+    index += memory
+
+    # look back N predictions
+    for i in range(1, memory + 1):
+        k = "prev-" * i
+        previob = tokens[index - i]
+        # update with IOB features
+        feat_dict[k + "iob"] = previob
+
+    return feat_dict
+
+
+def extract_postag_features(tokens, index, stemmer=None, memory=2):
+    """
+    `tokens`  = a POS-tagged sentence [(w1, t1), ...]
+    `index`   = the index of the token we want to extract features for
+    """
+    original_toks = list(tokens)
+    # word features
+    feat_dict = extract_word_features([t[0] for t in tokens],
+                                      index, stemmer, memory=memory)
+
+    # Pad the sequence with placeholders
+    tokens = []
+    for i in range(1, memory + 1):
+        tokens.append((f'__START{i}__', f'__START{i}__'))
+    tokens = list(reversed(tokens)) + original_toks
+    for i in range(1, memory + 1):
+        tokens.append((f'__END{i}__', f'__END{i}__'))
+
+    # shift the index to accommodate the padding
+    index += memory
 
     word, pos = tokens[index]
-    prevword, prevpos = tokens[index - 1]
-    prevprevword, prevprevpos = tokens[index - 2]
-    nextword, nextpos = tokens[index + 1]
-    nextnextword, nextnextpos = tokens[index + 2]
-    previob = history[-1]
-    prevpreviob = history[-2]
+
+    # update with postag features
+    feat_dict["pos"] = pos
+
+    # look ahead N words
+    for i in range(1, memory + 1):
+        k = "next-" * i
+        nextword, nextpos = tokens[index + i]
+        feat_dict[k + "pos"] = nextpos
+
+    # look back N words
+    for i in range(1, memory + 1):
+        k = "prev-" * i
+        prevword, prevpos = tokens[index - i]
+        feat_dict[k + "pos"] = prevpos
+
+    return feat_dict
+
+
+def extract_word_features(tokens, index=0, stemmer=None, memory=2):
+    """
+    `tokens`  = a tokenized sentence [w1, w2, ...]
+    `index`   = the index of the token we want to extract features for
+    """
+    if isinstance(tokens, str):
+        tokens = [tokens]
+    original_toks = list(tokens)
+    # init the stemmer
+    stemmer = stemmer or SnowballStemmer('english')
+
+    # Pad the sequence with placeholders
+    tokens = []
+    for i in range(1, memory + 1):
+        tokens.append(f'__START{i}__')
+    tokens = list(reversed(tokens)) + original_toks
+    for i in range(1, memory + 1):
+        tokens.append(f'__END{i}__')
+
+    # shift the index to accommodate the padding
+    index += memory
+
+    word = tokens[index]
+    feat_dict = extract_single_word_features(word)
+    feat_dict["word"] = word
+    feat_dict["shape"] = get_word_shape(word)
+    feat_dict["lemma"] = stemmer.stem(word)
+
+    # look ahead N words
+    for i in range(1, memory + 1):
+        k = "next-" * i
+        nextword = tokens[index + i]
+        feat_dict[k + "word"] = nextword
+        feat_dict[k + "lemma"] = stemmer.stem(nextword)
+        feat_dict[k + "shape"] = get_word_shape(nextword)
+
+    # look back N words
+    for i in range(1, memory + 1):
+        k = "prev-" * i
+        prevword = tokens[index - i]
+        feat_dict[k + "word"] = prevword
+        feat_dict[k + "lemma"] = stemmer.stem(prevword)
+        feat_dict[k + "shape"] = get_word_shape(prevword)
+
+    return feat_dict
+
+
+def extract_single_word_features(word):
 
     feat_dict = {
-        'word': word,
-        'lemma': stemmer.stem(word),
-        'pos': pos,
-        'shape': get_word_shape(word),
-
-        'next-word': nextword,
-        'next-pos': nextpos,
-        'next-lemma': stemmer.stem(nextword),
-        'next-shape': get_word_shape(nextword),
-
-        'next-next-word': nextnextword,
-        'next-next-pos': nextnextpos,
-        'next-next-lemma': stemmer.stem(nextnextword),
-        'next-next-shape': get_word_shape(nextnextword),
-
-        'prev-word': prevword,
-        'prev-pos': prevpos,
-        'prev-lemma': stemmer.stem(prevword),
-        'prev-iob': previob,
-        'prev-shape': get_word_shape(prevword),
-
-        'prev-prev-word': prevprevword,
-        'prev-prev-pos': prevprevpos,
-        'prev-prev-lemma': stemmer.stem(prevprevword),
-        'prev-prev-iob': prevpreviob,
-        'prev-prev-shape': get_word_shape(prevprevword),
+        'suffix1': word[-1:],
+        'suffix2': word[-2:],
+        'suffix3': word[-3:],
+        'prefix1': word[:1],
+        'prefix2': word[:2],
+        'prefix3': word[:3]
     }
     return feat_dict
+
+
+def extract_rte_features(rtepair):
+    extractor = nltk.RTEFeatureExtractor(rtepair)
+    features = {}
+    features['word_overlap'] = len(extractor.overlap('word'))
+    features['word_hyp_extra'] = len(extractor.hyp_extra('word'))
+    features['ne_overlap'] = len(extractor.overlap('ne'))
+    features['ne_hyp_extra'] = len(extractor.hyp_extra('ne'))
+    return features

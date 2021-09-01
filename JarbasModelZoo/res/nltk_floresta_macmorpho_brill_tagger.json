@@ -1,15 +1,1 @@
-{
-  "corpus": "floresta + macmorpho",
-  "lang": "pt",
-  "model_id": "nltk_floresta_macmorpho_brill_tagger",
-  "tagset": "universal",
-  "algo": "nltk.brill.fntbl37",
-  "backoff_taggers": [
-    "DefaultTagger",
-    "AffixTagger",
-    "UnigramTagger",
-    "RegexpTagger",
-    "BigramTagger",
-    "TrigramTagger"
-  ]
-}
+{"corpus": "floresta + macmorpho", "lang": "pt", "model_id": "nltk_floresta_macmorpho_brill_tagger", "corpus_homepage": "https://www.nltk.org/nltk_data", "tagset": "Universal Dependencies", "algo": "nltk.brill.fntbl37", "backoff_taggers": ["DefaultTagger", "AffixTagger", "UnigramTagger", "RegexpTagger", "BigramTagger", "TrigramTagger"], "required_packages": ["nltk"], "accuracy": 0.960109011627907}
